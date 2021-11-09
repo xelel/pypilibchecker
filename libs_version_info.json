@@ -1,0 +1,50 @@
+[
+    {
+        "packageName": "pandas",
+        "currentVersion": "1.3.0",
+        "latestVersion": "1.3.4",
+        "outOfDate": true
+    },
+    {
+        "packageName": "numpy",
+        "currentVersion": "1.9.3",
+        "latestVersion": "1.9.3",
+        "outOfDate": false
+    },
+    {
+        "packageName": "redis",
+        "currentVersion": "3.5.2",
+        "latestVersion": "4.0.0rc1",
+        "outOfDate": true
+    },
+    {
+        "packageName": "matplotlib",
+        "currentVersion": "3.5.0rc1",
+        "latestVersion": "3.5.0rc1",
+        "outOfDate": false
+    },
+    {
+        "packageName": "Flask",
+        "currentVersion": "2.0.0",
+        "latestVersion": "2.0.2",
+        "outOfDate": true
+    },
+    {
+        "packageName": "requests",
+        "currentVersion": "2.25.1",
+        "latestVersion": "2.9.2",
+        "outOfDate": true
+    },
+    {
+        "packageName": "uvicorn",
+        "currentVersion": "0.9.1",
+        "latestVersion": "0.9.1",
+        "outOfDate": false
+    },
+    {
+        "packageName": "beautifulsoup4",
+        "currentVersion": "4.9.1",
+        "latestVersion": "4.9.3",
+        "outOfDate": true
+    }
+]
