@@ -7,20 +7,20 @@
     },
     {
         "packageName": "numpy",
-        "currentVersion": "1.9.3",
-        "latestVersion": "1.9.3",
+        "currentVersion": "1.21.4",
+        "latestVersion": "1.21.4",
         "outOfDate": false
     },
     {
         "packageName": "redis",
         "currentVersion": "3.5.2",
-        "latestVersion": "4.0.0rc2",
+        "latestVersion": "3.5.3",
         "outOfDate": true
     },
     {
         "packageName": "matplotlib",
-        "currentVersion": "3.5.0rc1",
-        "latestVersion": "3.5.0rc1",
+        "currentVersion": "3.4.3",
+        "latestVersion": "3.4.3",
         "outOfDate": false
     },
     {
@@ -32,19 +32,19 @@
     {
         "packageName": "requests",
         "currentVersion": "2.25.1",
-        "latestVersion": "2.9.2",
+        "latestVersion": "2.26.0",
         "outOfDate": true
     },
     {
         "packageName": "uvicorn",
-        "currentVersion": "0.9.1",
-        "latestVersion": "0.9.1",
+        "currentVersion": "0.15.0",
+        "latestVersion": "0.15.0",
         "outOfDate": false
     },
     {
         "packageName": "beautifulsoup4",
         "currentVersion": "4.9.1",
-        "latestVersion": "4.9.3",
+        "latestVersion": "4.10.0",
         "outOfDate": true
     }
 ]

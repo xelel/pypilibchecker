@@ -20,8 +20,8 @@ def pypi_api_request(package_name,current_version=None):
     url = f"https://pypi.org/pypi/{package_name}/json"
     r = requests.get(url)
     data = r.json()
-    releases = list(data['releases'].keys())
-    latest_version = releases[-1]
+    latest_version = data['info']['version']
+    #latest_version = releases[-1]
     outofDate=''
 
     if current_version==None:
