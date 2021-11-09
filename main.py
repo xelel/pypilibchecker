@@ -1,3 +1,5 @@
+import json
+
 import requests
 import re
 import pprint as pp
@@ -74,3 +76,7 @@ for package in libs_list:
         dict_lib_info=pypi_api_request(package_name)
         list_libs_info_versions.append(dict_lib_info)
 pp.pprint(list_libs_info_versions)
+
+json_object = json.dumps(list_libs_info_versions,indent=4)
+with open("libs_version_info.json", "w") as outfile:
+    outfile.write(json_object)
