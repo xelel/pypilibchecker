@@ -21,6 +21,7 @@ def pypi_api_request(package_name,current_version=None):
     r = requests.get(url)
     data = r.json()
     latest_version = data['info']['version']
+    libs_list = re.findall(r'\w.+', requirements_file_text)
     #latest_version = releases[-1]
     outofDate=''
 
@@ -78,5 +79,6 @@ for package in libs_list:
 pp.pprint(list_libs_info_versions)
 
 json_object = json.dumps(list_libs_info_versions,indent=4)
+
 with open("libs_version_info.json", "w") as outfile:
     outfile.write(json_object)
