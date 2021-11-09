@@ -1,5 +1,5 @@
 import json
-
+from packaging import version
 import requests
 import re
 import pprint as pp
@@ -28,10 +28,10 @@ def pypi_api_request(package_name,current_version=None):
         current_version=latest_version
         outofDate=False
 
-    elif latest_version==current_version:
+    elif version.parse(latest_version)==version.parse(current_version):
         outofDate=False
 
-    elif latest_version!=current_version:
+    elif version.parse(latest_version)!=version.parse(current_version):
         outofDate=True
 
     dict_lib_info={"packageName": package_name,

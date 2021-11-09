@@ -14,7 +14,7 @@
     {
         "packageName": "redis",
         "currentVersion": "3.5.2",
-        "latestVersion": "4.0.0rc1",
+        "latestVersion": "4.0.0rc2",
         "outOfDate": true
     },
     {
