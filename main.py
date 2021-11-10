@@ -22,7 +22,6 @@ def pypi_api_request(package_name,current_version=None):
     data = r.json()
     latest_version = data['info']['version']
     libs_list = re.findall(r'\w.+', requirements_file_text)
-    #latest_version = releases[-1]
     outofDate=''
 
     if current_version==None:
@@ -42,6 +41,7 @@ def pypi_api_request(package_name,current_version=None):
 
     return dict_lib_info
 
+
 #open requirements file
 with open('requirements.txt') as f:
     requirements_file_text = f.read()
@@ -49,36 +49,45 @@ with open('requirements.txt') as f:
 #create lib list with regex
 libs_list = re.findall(r'\w.+', requirements_file_text)
 
-#list with libs versions info
-list_libs_info_versions=[]
-for package in libs_list:
+requirements_list_info=[]
 
-    if package.find('==') > 0:
-        index = package.find('==')
-        package_name = package[0:index]
-        current_version = package[index + 2::]
-        dict_lib_info=pypi_api_request(package_name, current_version)
-        list_libs_info_versions.append(dict_lib_info)
-
-    elif package.find('>=') > 0:
-        index = package.find('>=')
-        package_name = package[0:index]
-        current_version= package[index + 2::]
-        dict_lib_info=pypi_api_request(package_name,current_version)
-        list_libs_info_versions.append(dict_lib_info)
-
-    elif package.find('[') > 0:
-        index = package.find('[')
-        package_name = package[0:index]
-        dict_lib_info=pypi_api_request(package_name)
-        list_libs_info_versions.append(dict_lib_info)
+for lib in libs_list:
+    
+    if '==' in lib:
+        lib_name=re.findall(r'(\w+)=',lib)
+        lib_name=lib_name[0]
+        lib_version=re.findall(r'=([0-9.]+)',lib)
+        lib_version=lib_version[0]
+        lib_info=pypi_api_request(lib_name,lib_version)
+        requirements_list_info.append(lib_info)
+    
+    elif '>' in lib:
+        lib_name=re.findall(r'(\w+)>',lib)
+        lib_name=lib_name[0]
+        lib_version=re.findall(r'=([0-9.]+)',lib)
+        lib_version=lib_version[0]
+        lib_info = pypi_api_request(lib_name, lib_version)
+        requirements_list_info.append(lib_info)
+    
+    elif '~=' in lib:
+        lib_name=re.findall(r'(\w+)~',lib)
+        lib_name=lib_name[0]
+        lib_version=re.findall(r'=([0-9.]+)',lib)
+        lib_version=lib_version[0]
+        lib_info = pypi_api_request(lib_name, lib_version)
+        requirements_list_info.append(lib_info)
+    
+    elif '[' and ']' in lib:
+        lib_name=re.findall(r'(\w+)\[\w+]',lib)
+        lib_name=lib_name[0]
+        lib_info=pypi_api_request(lib_name,None)
+        requirements_list_info.append(lib_info)
+    
     else:
-        package_name = package
-        dict_lib_info=pypi_api_request(package_name)
-        list_libs_info_versions.append(dict_lib_info)
-pp.pprint(list_libs_info_versions)
+        lib_name=lib
+        lib_info = pypi_api_request(lib_name, None)
+        requirements_list_info.append(lib_info)
 
-json_object = json.dumps(list_libs_info_versions,indent=4)
-
+json_object = json.dumps(requirements_list_info,indent=4)
 with open("libs_version_info.json", "w") as outfile:
     outfile.write(json_object)
